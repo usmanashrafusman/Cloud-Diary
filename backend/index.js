@@ -23,11 +23,6 @@ app.use("/api/auth", authRoutes);
 // middleware for all routes to api/notes
 app.use("/api/notes", notesRoutes);
 
-// simple
-app.get("/", (req, res) => {
-  res.send("Hello Usman!");
-});
-
 //creating server
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
