@@ -13,7 +13,7 @@ const navigate = useNavigate()
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          iNotebook
+          Cloud Diary
         </Link>
         <button
           className="navbar-toggler"
@@ -37,17 +37,6 @@ const navigate = useNavigate()
                 to="/"
               >
                 Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${
-                  location.pathname === "/about" ? "active" : ""
-                }`}
-                aria-current="page"
-                to="/about"
-              >
-                About
               </Link>
             </li>
           </ul>

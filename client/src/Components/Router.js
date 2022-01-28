@@ -2,7 +2,6 @@ import React, { createContext, useState, useEffect } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Navbar from "./Navbar";
 import Home from "./Home";
-import About from "./About";
 import Alerts from "./Alerts";
 import Login from "./Login";
 import SignUp from "./SignUp";
@@ -25,12 +24,12 @@ function Router() {
       setAlert(null);
     }, 1500);
   };
-  const host = "http://localhost:5000";
+
 
   const [notes, setNotes] = useState([]);
 
   const getAllNotes = async () => {
-    const response = await fetch(`${host}/api/notes/fetchallnotes`, {
+    const response = await fetch(`/api/notes/fetchallnotes`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +43,7 @@ function Router() {
   // Edit a Note
   const editNote = async (id, title, description, tag) => {
     // API Call
-    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+    const response = await fetch(`/api/notes/updatenote/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +68,7 @@ function Router() {
   };
 
   const addNote = async (title, description, tag) => {
-    const response = await fetch(`${host}/api/notes/addnote`, {
+    const response = await fetch(`/api/notes/addnote`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -83,7 +82,7 @@ function Router() {
   };
 
   const deleteNote = async (id) => {
-    const response = await fetch(`${host}/api/notes/delete/${id}`, {
+    const response = await fetch(`/api/notes/delete/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -117,7 +116,6 @@ function Router() {
               )
             }
           />
-          <Route exact path="/about" element={<About />} />
           <Route
             exact
             path="/login"

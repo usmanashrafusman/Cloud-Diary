@@ -10,7 +10,7 @@ require("dotenv").config();
 connetToMongo();
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.use(cors())
 
@@ -23,7 +23,11 @@ app.use("/api/auth", authRoutes);
 // middleware for all routes to api/notes
 app.use("/api/notes", notesRoutes);
 
+if(process.env.NODE_ENV === "production"){
+  app.use(express.static("client/build"))
+}
+
 //creating server
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Cloud-Diary app listening at http://localhost:${port}`);
 });
